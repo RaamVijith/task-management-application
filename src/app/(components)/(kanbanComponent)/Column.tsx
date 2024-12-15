@@ -16,7 +16,7 @@ import { CalendarForm } from "@/components/ui/CaladerForm";
 import { useToast } from "@/hooks/use-toast"
 
 const priorityOptions = ["HIGH", "MEDIUM", "LOW"];
-// Column Component
+
 type ColumnProps = {
   column: ColumnType;
   tasks: Task[];
@@ -182,9 +182,9 @@ export function Column({
 
                   {dueDate ? (
                     <div className="h-6 px-4 py-2 items-center flex text-[13px] font-medium text-[#CB2E27] bg-[#FCF4F4] rounded-[4px]">
-                      {/* {task.dueDate} */}
-                      {dueDate}
-                    </div>
+                    {new Intl.DateTimeFormat('en-US', { month: 'short', day: '2-digit' })
+                      .format(new Date(`2024-${dueDate.replace('.', '-')}`))}
+                  </div>
                   ) : (
                     <>
                       <CalendarForm onDateSelect={setDueDate} />

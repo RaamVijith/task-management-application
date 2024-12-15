@@ -9,7 +9,6 @@ import type {
 import { Column } from "../(components)/(kanbanComponent)/Column";
 import { DndContext, DragEndEvent } from "@dnd-kit/core";
 import Modal from "../(components)/(kanbanComponent)/Modal";
-// Main Tasks Component
 
 const COLUMNS: ColumnType[] = [
   { id: "TODO", title: "To Do" },

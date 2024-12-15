@@ -32,15 +32,16 @@ export function CalendarForm({
 }) {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
+    
   });
 
   return (
-    <Form {...form}>
+    <Form {...form} >
       <FormField
         control={form.control}
         name="dob"
         render={({ field }) => (
-          <FormItem className="flex flex-col">
+          <FormItem className="flex flex-col z-50">
             <Popover>
               <PopoverTrigger asChild>
                 <FormControl>
@@ -49,7 +50,7 @@ export function CalendarForm({
                   </div>
                 </FormControl>
               </PopoverTrigger>
-              <PopoverContent className="w-auto p-0" align="start">
+              <PopoverContent className="w-auto p-0 z-50" align="start">
                 <Calendar
                   mode="single"
                   selected={field.value}

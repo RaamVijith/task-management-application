@@ -52,7 +52,7 @@ const themes = {
     ...darkTheme,
     white: colors.gray["950"],
     black: colors.gray["50"],
-    border: colors.gray["50"],
+    border: "#EFEFEF",
 
   },
 };
@@ -119,6 +119,7 @@ const config: Config = {
   		}
   	}
   },
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   plugins: [createThemes(themes), require("tailwindcss-animate")],
 };
 
