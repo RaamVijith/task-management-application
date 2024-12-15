@@ -13,7 +13,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Assignee } from "../../../../public/data/assignee";
 import { CalendarForm } from "@/components/ui/CaladerForm";
-import { useToast } from "@/hooks/use-toast"
+import { useToast } from "@/hooks/use-toast";
 
 const priorityOptions = ["HIGH", "MEDIUM", "LOW"];
 
@@ -36,15 +36,12 @@ export function Column({
   const { setNodeRef } = useDroppable({
     id: column.id,
   });
-  const { toast } = useToast()
+  const { toast } = useToast();
   const [showForm, setShowForm] = useState(false);
   const [taskTitle, setTaskTitle] = useState("");
   const [priority, setPriority] = useState("");
-
   const [dueDate, setDueDate] = useState("");
-
   const [taskDescription, setTaskDescription] = useState("");
-
   const [assignee, setAssignee] = useState("");
 
   const handleSubmit = () => {
@@ -64,12 +61,12 @@ export function Column({
       setDueDate("");
 
       setShowForm(false);
-    }else{
+    } else {
       toast({
         variant: "destructive",
         title: "Fill all the fields",
         description: "There was a problem with your request.",
-      })
+      });
     }
   };
 
@@ -123,8 +120,21 @@ export function Column({
                 />
               </div>
               <div className="flex flex-row gap-3 items-center">
-              <TickSquare onClick={handleSubmit} size="24" color="#727272" variant="Outline" className="text-blue-400 cursor-pointer"/>
-              <CloseSquare onClick={()=>setShowForm(false)} size="24" color="#727272" variant="Outline" className="cursor-pointer"/>              </div>
+                <TickSquare
+                  onClick={handleSubmit}
+                  size="24"
+                  color="#727272"
+                  variant="Outline"
+                  className="text-blue-400 cursor-pointer"
+                />
+                <CloseSquare
+                  onClick={() => setShowForm(false)}
+                  size="24"
+                  color="#727272"
+                  variant="Outline"
+                  className="cursor-pointer"
+                />{" "}
+              </div>
             </div>
             <div className="flex flex-col items-start gap-5 p-6">
               <div className="flex flex-row justify-between items-center w-full">
@@ -182,9 +192,11 @@ export function Column({
 
                   {dueDate ? (
                     <div className="h-6 px-4 py-2 items-center flex text-[13px] font-medium text-[#CB2E27] bg-[#FCF4F4] rounded-[4px]">
-                    {new Intl.DateTimeFormat('en-US', { month: 'short', day: '2-digit' })
-                      .format(new Date(`2024-${dueDate.replace('.', '-')}`))}
-                  </div>
+                      {new Intl.DateTimeFormat("en-US", {
+                        month: "short",
+                        day: "2-digit",
+                      }).format(new Date(`2024-${dueDate.replace(".", "-")}`))}
+                    </div>
                   ) : (
                     <>
                       <CalendarForm onDateSelect={setDueDate} />
@@ -229,27 +241,7 @@ export function Column({
             </div>
           </div>
         ) : (
-          // <div className="mt-4 flex flex-col gap-2">
-          //   <input
-          //     type="text"
-          //     placeholder="Task Title"
-          //     value={taskTitle}
-          //     onChange={(e) => setTaskTitle(e.target.value)}
-          //     className="rounded p-2"
-          //   />
-          //   <textarea
-          //     placeholder="Task Description"
-          //     value={taskDescription}
-          //     onChange={(e) => setTaskDescription(e.target.value)}
-          //     className="rounded p-2"
-          //   />
-          //   <button
-          //     onClick={handleSubmit}
-          //     className="mt-2 rounded bg-green-600 px-4 py-2 text-white hover:bg-green-500"
-          //   >
-          //     Submit Task
-          //   </button>
-          // </div>
+          
           <button
             onClick={() => setShowForm(true)}
             className="w-full h-[48px] flex flex-row gap-3 mt-2 justify-center items-center text-4 text-[#727272] font-semibold"
